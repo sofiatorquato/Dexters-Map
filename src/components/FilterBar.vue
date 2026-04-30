@@ -1,28 +1,20 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 
+const status = ["Todos", "Na mira", "Monitorado", "Amostra coletada", "Eliminado"];
+const ameaca = ["Todos", "Baixa", "Média", "Alta"];
 
 </script>
 
 <template>
-  <div class="flex gap-4 text-gray-400 items-center p-5 border-t-1 border-blue-300">
+  <div class="flex gap-4 text-gray-400 items-center p-5 border-t-1 border-blue-300 bg-black border-b-1">
     <p>STATUS</p>
     <div class="flex gap-4">
-        <button class="border border-blue-300 p-2">Todos</button>
-        <button class="border border-blue-300 p-2">Na mira</button>
-        <button class="border border-blue-300 p-2">Monitorado</button>
-        <button class="border border-blue-300 p-2">Amostra coletada</button>
-        <button class="border border-blue-300 p-2">Eliminado</button>
+        <button class="border border-blue-300 px-2 cursor-pointer" v-for="item in status" :key="item">{{item}}</button>     
         </div>   
 
         <p class="ml-10">AMEAÇA</p>
-
         <div class="flex gap-4">
-        <button class="border border-blue-300 p-2">Todos</button>
-        <button class="border border-blue-300 p-2">Na mira</button>
-        <button class="border border-blue-300 p-2">Monitorado</button>
-        <button class="border border-blue-300 p-2">Amostra coletada</button>
-        <button class="border border-blue-300 p-2">Eliminado</button>
+        <button class="border border-blue-300 px-2 cursor-pointer" v-for="itemAmeaca in ameaca">{{ itemAmeaca }}</button>
         </div>   
   </div>
 </template>
