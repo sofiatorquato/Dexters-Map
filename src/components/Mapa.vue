@@ -24,12 +24,10 @@ const ameacaSelecionada = computed(() => {
 </script>
 
 <template>
-  <!-- O segredo do Tailwind: o h-full aqui preenche o 'main' do seu App.vue -->
   <div class="w-full h-full min-h-[500px]">
     <l-map ref="map" v-model:zoom="zoom" :center="center" :use-global-leaflet="false">
       <l-tile-layer :url="url" layer-type="base" name="OpenStreetMap"></l-tile-layer>
       
-      <!-- Exemplo de Pin de Alvo -->
       <l-marker  v-for="alvo in ameacaSelecionada" :key="alvo.codigo" :lat-lng="alvo.coordenadas">
         <l-popup>ALVO: Arthur Mitchell (Trinity Killer)</l-popup>
       </l-marker>
