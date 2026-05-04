@@ -1,7 +1,10 @@
 <script setup lang="ts">
 
+
 const status = ["Todos", "Na mira", "Monitorado", "Amostra coletada", "Eliminado"];
 const ameaca = ["Todos", "Baixa", "Média", "Alta"];
+
+const emits = defineEmits(['filtros'])
 
 </script>
 
@@ -14,7 +17,10 @@ const ameaca = ["Todos", "Baixa", "Média", "Alta"];
 
         <p class="ml-10">AMEAÇA</p>
         <div class="flex gap-4">
-        <button class="border border-blue-300 px-2 cursor-pointer" v-for="itemAmeaca in ameaca">{{ itemAmeaca }}</button>
+        <button class="border border-blue-300 px-2 cursor-pointer" v-for="itemAmeaca in ameaca" :key="itemAmeaca" @click="$emit('filtros',itemAmeaca.toUpperCase())">{{ itemAmeaca }}</button>
         </div>   
+        <div>
+          <span>Resultados:</span>
+        </div>
   </div>
 </template>
