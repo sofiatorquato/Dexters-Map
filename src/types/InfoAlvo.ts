@@ -6,5 +6,6 @@ export interface Info{
     nomeReal: string,
     localizacao: string,
     coordenadas: PointTuple,
+    status: 'TODOS'|'NA MIRA'| 'ELIMINADO' | 'AMOSTRA COLETADA',
     img: string
 }

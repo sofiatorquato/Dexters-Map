@@ -8,6 +8,7 @@ export const listaAlvos: Info[] = [{
     nomeReal: "Brian Moser",
     localizacao: "Bay Harbor",
     coordenadas: [25.8845, -80.1292],
+    status: "ELIMINADO",
     img: "/img/brianmoser.jpg"
 }, {
     codigo: "T-002",
@@ -16,6 +17,7 @@ export const listaAlvos: Info[] = [{
     nomeReal: "Arthur Mitchell",
     localizacao: "Subúrbios de Miami",
     coordenadas: [25.7285, -80.2374],
+    status: "NA MIRA",
     img: "/img/arthur.jpg"
 }, {
     codigo: "T-003",
@@ -24,6 +26,7 @@ export const listaAlvos: Info[] = [{
     nomeReal: "Travis Marshall",
     localizacao: "Museus e Igrejas",
     coordenadas: [25.7864, -80.1878],
+    status: "AMOSTRA COLETADA",
     img: "/img/travis.jpg"
 
 }, {
@@ -33,6 +36,7 @@ export const listaAlvos: Info[] = [{
     nomeReal: "Isaak Sirko",
     localizacao: "Boates de Miami",
     coordenadas: [25.7797, -80.1340],
+    status: "AMOSTRA COLETADA",
     img: "/img/isaak.jpg"
 
 }]

@@ -9,17 +9,20 @@ import { listaAlvos } from "../data/dataAlvo";
 const zoom = ref(12);
 const center = ref<PointTuple>([25.7617, -80.1918]);
 
-const prop = defineProps<{
-  filtro: string
+const props = defineProps<{
+  ameaca: string,
+  status: string
 }>()
 
 const url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 
-const ameacaSelecionada = computed(() => {
-    if (prop.filtro === "TODOS") {
-        return listaAlvos
-    }
-    return listaAlvos.filter((alvo) => alvo.nivelAmeaca === prop.filtro)
+const filtros = computed(() => {
+  return listaAlvos.filter((alvo) => {
+    const ameacaMatch = props.ameaca === "TODOS" || alvo.nivelAmeaca === props.ameaca;
+    const statusMatch = props.status === "TODOS" || alvo.status === props.status;
+
+    return ameacaMatch && statusMatch;
+   })
 })
 </script>
 
@@ -28,8 +31,8 @@ const ameacaSelecionada = computed(() => {
     <l-map ref="map" v-model:zoom="zoom" :center="center" :use-global-leaflet="false">
       <l-tile-layer :url="url" layer-type="base" name="OpenStreetMap"></l-tile-layer>
       
-      <l-marker  v-for="alvo in ameacaSelecionada" :key="alvo.codigo" :lat-lng="alvo.coordenadas">
-        <l-popup>ALVO: Arthur Mitchell (Trinity Killer)</l-popup>
+      <l-marker  v-for="alvo in filtros" :key="alvo.codigo" :lat-lng="alvo.coordenadas">
+        <l-popup>ALVO: {{alvo.nomeReal}} ({{ alvo.codinome }})</l-popup>
       </l-marker>
       
     </l-map>

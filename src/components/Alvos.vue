@@ -4,16 +4,17 @@ import { listaAlvos } from '../data/dataAlvo';
 import { computed } from 'vue';
 
 const props = defineProps<{
-    filtro: string
+    filtro: string,
+    status:string
 }>()
 
-const ameacaSelecionada = computed(() => {
-    if (props.filtro === "TODOS") {
-        return listaAlvos
-    }
-
-    return listaAlvos.filter((alvo) => alvo.nivelAmeaca === props.filtro)
-})
+const filtros = computed(() => {
+    return listaAlvos.filter((alvo) => {
+        const ameacaMatch = props.filtro === "TODOS" || alvo.nivelAmeaca === props.filtro;
+        const statusMatch = props.status === "TODOS" || alvo.status === props.status;
+        return ameacaMatch && statusMatch;
+    });
+});
 
 </script>
 
@@ -24,7 +25,7 @@ const ameacaSelecionada = computed(() => {
         <p class="text-white">Alvos desta noite</p>
   </div>
 
-  <CardAlvo v-for="alvo in ameacaSelecionada" :key="alvo.codigo" :alvo="alvo"/>
+  <CardAlvo v-for="alvo in filtros" :key="alvo.codigo" :alvo="alvo"/>
 
  
 </template>
