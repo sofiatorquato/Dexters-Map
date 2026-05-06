@@ -8,6 +8,8 @@ const props = defineProps<{
     status:string
 }>()
 
+const emits = defineEmits(['selecionar']);
+
 const filtros = computed(() => {
     return listaAlvos.filter((alvo) => {
         const ameacaMatch = props.filtro === "TODOS" || alvo.nivelAmeaca === props.filtro;
@@ -25,7 +27,7 @@ const filtros = computed(() => {
         <p class="text-white">Alvos desta noite</p>
   </div>
 
-  <CardAlvo v-for="alvo in filtros" :key="alvo.codigo" :alvo="alvo"/>
+  <CardAlvo v-for="alvo in filtros" :key="alvo.codigo" :alvo="alvo" @click="$emit('selecionar',alvo)"/>
 
  
 </template>

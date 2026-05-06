@@ -24,6 +24,8 @@ const filtros = computed(() => {
     return ameacaMatch && statusMatch;
    })
 })
+const emits = defineEmits(['selecionar']);
+
 </script>
 
 <template>
@@ -31,8 +33,8 @@ const filtros = computed(() => {
     <l-map ref="map" v-model:zoom="zoom" :center="center" :use-global-leaflet="false">
       <l-tile-layer :url="url" layer-type="base" name="OpenStreetMap"></l-tile-layer>
       
-      <l-marker  v-for="alvo in filtros" :key="alvo.codigo" :lat-lng="alvo.coordenadas">
-        <l-popup>ALVO: {{alvo.nomeReal}} ({{ alvo.codinome }})</l-popup>
+      <l-marker  v-for="alvo in filtros" :key="alvo.codigo" :lat-lng="alvo.coordenadas" @click="$emit('selecionar',alvo)">
+        <!-- <l-popup>ALVO: {{alvo.nomeReal}} ({{ alvo.codinome }})</l-popup> -->
       </l-marker>
       
     </l-map>

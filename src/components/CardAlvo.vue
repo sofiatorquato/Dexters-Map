@@ -19,7 +19,7 @@ const classeAmeaca:any = computed(() => {
 </script>
 
 <template>
-   <section class="flex border border-blue-300 p-2 m-2 h-32 items-center">
+   <section class="flex border border-blue-300 p-2 m-2 h-32 items-center" cursor-pointer>
     <div>
         <img :src="alvo.img" alt="" class="w-24 h-24 min-w-[6rem] object-cover">
     </div>

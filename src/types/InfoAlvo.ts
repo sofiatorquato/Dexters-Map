@@ -7,5 +7,8 @@ export interface Info{
     localizacao: string,
     coordenadas: PointTuple,
     status: 'TODOS'|'NA MIRA'| 'ELIMINADO' | 'AMOSTRA COLETADA',
-    img: string
+    img: string,
+    crime: string,
+    descricaoCrime: string,
+    ultimaAparicao:string,
 }
