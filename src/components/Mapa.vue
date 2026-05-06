@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "leaflet/dist/leaflet.css";
-import { LMap, LTileLayer, LMarker, LPopup } from "@vue-leaflet/vue-leaflet";
+import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet";
 import { ref,computed } from "vue";
 import type { PointTuple } from "leaflet";
 import { listaAlvos } from "../data/dataAlvo";
