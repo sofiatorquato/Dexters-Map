@@ -3,6 +3,7 @@ import "leaflet/dist/leaflet.css";
 import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet";
 import { ref,computed } from "vue";
 import type { PointTuple } from "leaflet";
+import L from "leaflet";
 import { listaAlvos } from "../data/dataAlvo";
 
 // Configurações iniciais do mapa (Miami)
@@ -34,7 +35,6 @@ const emits = defineEmits(['selecionar']);
       <l-tile-layer :url="url" layer-type="base" name="OpenStreetMap"></l-tile-layer>
       
       <l-marker  v-for="alvo in filtros" :key="alvo.codigo" :lat-lng="alvo.coordenadas" @click="$emit('selecionar',alvo)">
-        <!-- <l-popup>ALVO: {{alvo.nomeReal}} ({{ alvo.codinome }})</l-popup> -->
       </l-marker>
       
     </l-map>

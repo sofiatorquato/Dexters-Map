@@ -8,6 +8,7 @@ import type{ Info } from './types/InfoAlvo';
 import ModalAlvos from './components/ModalAlvos.vue';
 
 
+
 const filtroAmeaca: any = ref('TODOS');
 const filtroStatus: any = ref('TODOS');
 

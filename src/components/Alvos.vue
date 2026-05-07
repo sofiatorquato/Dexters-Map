@@ -23,8 +23,8 @@ const filtros = computed(() => {
 <template>
     
 
-  <div class="flex justify-center items-center border-b-1 border-blue-300 py-2">
-        <p class="text-white">Alvos desta noite</p>
+  <div class="flex justify-start items-center border-b-1 border-cyan-300/40 py-2">
+        <p class="text-white ml-5 font-header tracking-wide"><span class="text-red-500">ALVOS</span> DESTA NOITE</p>
   </div>
 
   <CardAlvo v-for="alvo in filtros" :key="alvo.codigo" :alvo="alvo" @click="$emit('selecionar',alvo)"/>

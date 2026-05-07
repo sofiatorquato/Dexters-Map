@@ -1,1 +1,17 @@
+/* 1. SEMPRE NA PRIMEIRA LINHA */
+@import url('https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@400;700&family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* 2. IMPORTAÇÃO DO TAILWIND */
 @import "tailwindcss";
+
+/* 3. CONFIGURAÇÕES DE TEMA (Se usar v4) */
+@theme {
+    --font-header: "Michroma", sans-serif;
+    --font-file: "Orbitron", sans-serif;
+    --font-alvo: "Inter", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+
+    --color-dexter-red: #ff0000;
+    --color-dexter-blue: #00ccff;
+    --color-dexter-green: #00ff00;
+}
