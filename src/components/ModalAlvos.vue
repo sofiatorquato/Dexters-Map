@@ -79,8 +79,8 @@ const classeStatus = computed(() => {
           </div>
         </div>
 
-        <div class="flex justify-center border border-cyan-300/40 mt-5">
-          <button class="text-white p-2 font-header tracking-wide text-sm cursor-pointer text" @click="alvo.status!=='AMOSTRA COLETADA' &&  $emit('atualizarStatus','AMOSTRA COLETADA')" >{{ alvo.status==='AMOSTRA COLETADA'? 'AMOSTRA ARQUIVADA' :'COLETAR AMOSTRA DE SANGUE' }}</button>
+        <div class="flex justify-center border border-cyan-300/40 mt-5" :class="{'border border-green-400' :alvo.status==='AMOSTRA COLETADA'}">
+          <button class="p-2 font-header tracking-wide text-sm cursor-pointer" @click="alvo.status!=='AMOSTRA COLETADA' &&  $emit('atualizarStatus','AMOSTRA COLETADA')"  :class="{'text-green-400': alvo.status==='AMOSTRA COLETADA'}">{{ alvo.status==='AMOSTRA COLETADA'? 'AMOSTRA ARQUIVADA' :'COLETAR AMOSTRA DE SANGUE' }}</button>
         </div>
 
         <div class="flex items-center justify-between mt-5">
