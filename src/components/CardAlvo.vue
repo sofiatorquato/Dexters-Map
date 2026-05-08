@@ -3,7 +3,7 @@ import type { Info } from '../types/InfoAlvo'
 import { computed } from 'vue';
 
 const props = defineProps<{
-    alvo: Info
+    alvo: Info  ///
 }>()
 
 const coresAmeaca:any = {
