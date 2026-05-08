@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Info } from '../types/InfoAlvo';
-import { computed,ref } from 'vue';
+import { computed } from 'vue';
 
 const props = defineProps<{
   exibir:boolean
