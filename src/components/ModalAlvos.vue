@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import type { Info } from '../types/InfoAlvo';
-import { computed } from 'vue';
+import { computed,ref } from 'vue';
 
 const props = defineProps<{
   exibir:boolean
   alvo: Info
 }>()
 
-const emits = defineEmits(['fecharModal']);
+const emits = defineEmits(['fecharModal', 'atualizarStatus','statusAmostraColetada']);
 
 const statusAlvo = ['ATIVO', 'NA MIRA', 'ELIMINADO', 'AMOSTRA COLETADA'];
 
@@ -68,23 +68,23 @@ const classeStatus = computed(() => {
           </div>
         </div>
 
-        <div class="border border-cyan-300/40 px-2 py-3">
+        <div class="border border-cyan-300/40 px-2 py-3" :class="{'border border-green-400 text-green-400': alvo.status==='AMOSTRA COLETADA'}">
           <div class="flex justify-between items-center">
-            <span class="text-gray-400 font-alvo tracking-wide text-sm">EVIDÊNCIA: LÂMINA DE SANGUE</span>
-            <button class="border border-cyan-300/40 text-gray-400 p-1 text-xs font-mono">Pendente</button>
+            <span class="text-gray-400 font-alvo tracking-wide text-sm" :class="{'text-green-400':alvo.status==='AMOSTRA COLETADA'}" >EVIDÊNCIA: LÂMINA DE SANGUE</span>
+            <button class="border border-cyan-300/40 text-gray-400 p-1 text-xs font-mono" :class="{'border border-green-400 text-green-400': alvo.status==='AMOSTRA COLETADA'}">{{ alvo.status==='AMOSTRA COLETADA'? 'Concluído' : 'Pendente' }}</button>
           </div>
           <div class="flex items-center gap-2 my-2">
-            <button class="border border-cyan-300/40 w-12 h-7"></button>
-            <span class="text-gray-400 font-mono text-xs">Coletar após eliminação confirmada do alvo.</span>
+            <button class="border border-cyan-300/40 w-12 h-7" :class="{'bg-green-400': alvo.status==='AMOSTRA COLETADA'}"></button>
+            <span class="text-gray-400 font-mono text-xs" >{{ alvo.status==='AMOSTRA COLETADA'? 'Lâmina catalogada na caixa de mogno' : 'Coletar após eliminação confirmada do alvo.' }}</span>
           </div>
         </div>
 
         <div class="flex justify-center border border-cyan-300/40 mt-5">
-          <button class="text-white p-2 font-header tracking-wide text-sm cursor-pointer">COLETAR AMOSTRA DE SANGUE</button>
+          <button class="text-white p-2 font-header tracking-wide text-sm cursor-pointer text" @click="alvo.status!=='AMOSTRA COLETADA' &&  $emit('atualizarStatus','AMOSTRA COLETADA')" >{{ alvo.status==='AMOSTRA COLETADA'? 'AMOSTRA ARQUIVADA' :'COLETAR AMOSTRA DE SANGUE' }}</button>
         </div>
 
         <div class="flex items-center justify-between mt-5">
-          <button v-for="status in statusAlvo" :key="status" class="text-gray-400 border border-cyan-300/40 text-sm px-2 cursor-pointer font-mono">
+          <button v-for="status in statusAlvo" :key="status" class="text-white font-mono cursor-pointer" :class="{'bg-cyan-300/40 rounded px-1': status === alvo.status }" @click="$emit('atualizarStatus', status)">
             {{ status }}
           </button>
         </div>

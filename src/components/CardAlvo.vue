@@ -25,8 +25,9 @@ const classeAmeaca:any = computed(() => {
     </div>
     <div class="text-white ml-2">
         <div class="flex gap-5 items-center">
-            <span class="font-mono text-sm">{{ alvo.codigo }}</span>
-            <button :class="[classeAmeaca]" class="font-mono text-sm">{{alvo.nivelAmeaca}}</button>
+            <span class="font-mono text-xs">{{ alvo.codigo }}</span>
+            <button :class="[classeAmeaca]" class="font-mono text-xs">{{alvo.nivelAmeaca}}</button>
+            <button class="border border-cyan-300/40 px-1 text-xs py-0.5 ml-25" :class="{'border border-green-400 text-green-400': alvo.status==='AMOSTRA COLETADA'}">Lâmina</button>
         </div>
         
         <h2 class="font-alvo text-base tracking-tight font-bold">{{ alvo.codinome }}</h2>

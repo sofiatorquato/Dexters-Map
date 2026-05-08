@@ -6,6 +6,7 @@ import Mapa from './components/Mapa.vue';
 import { ref } from 'vue';
 import type{ Info } from './types/InfoAlvo';
 import ModalAlvos from './components/ModalAlvos.vue';
+import { listaAlvos } from './data/dataAlvo';
 
 
 
@@ -20,18 +21,30 @@ const alvoSelecionado = ref<Info | null>(null);
   mostrarModal.value = true;
 };
 
+const atualizarStatus = (novoStatus: any) => {
+  if (alvoSelecionado.value) {
+    const alvoLista:any = listaAlvos.find(alvo => alvo.codigo === alvoSelecionado.value?.codigo);
 
+    if (alvoLista) {
+      alvoLista.status = novoStatus;
+      alvoSelecionado.value = {
+        ...alvoSelecionado.value,
+        status: novoStatus
+      }
+    }
+  }
+}
 
 </script>
 
 <template>
   <div class="h-screen flex flex-col bg-black overflow-hidden">
     <Header></Header>
-    <FilterBar @filtros="filtroAmeaca = $event" @status-alvo = "filtroStatus = $event"/>
+    <FilterBar :status-ativo="filtroStatus" :ameaca-ativo="filtroAmeaca" @filtros="filtroAmeaca = $event" @status-alvo = "filtroStatus = $event"/>
 
     <div class="flex flex-1 overflow-hidden">
       <aside class="w-100 h-full border-r border-blue-900">
-        <Alvos :filtro="filtroAmeaca" :status="filtroStatus" @selecionar="abrirModal"/>
+        <Alvos :filtro="filtroAmeaca" :status="filtroStatus" @selecionar="abrirModal" @atualizarStatus="atualizarStatus"/>
       </aside>
 
       <main class="flex-1 h-full bg-slate-900">
@@ -40,7 +53,7 @@ const alvoSelecionado = ref<Info | null>(null);
 
     </div>
 
-    <ModalAlvos v-if="alvoSelecionado" :exibir="mostrarModal" :alvo="alvoSelecionado" @fecharModal="mostrarModal=false"/>
+    <ModalAlvos v-if="alvoSelecionado" :exibir="mostrarModal" :alvo="alvoSelecionado" @fecharModal="mostrarModal=false" @atualizarStatus="atualizarStatus"/>
   </div>
   
 </template>
