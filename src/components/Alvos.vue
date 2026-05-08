@@ -6,7 +6,7 @@ import { computed } from 'vue';
 const props = defineProps<{
     filtro: string,
     status:string
-}>()//
+}>()
 
 
 const emits = defineEmits(['selecionar']);
